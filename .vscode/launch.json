@@ -1,0 +1,50 @@
+ {
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "C: make, run, and debug leakcount",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/leakcount",
+            "args": [
+                "${input:programToTest}",
+                "${input:programToTestArgs}"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "make all",
+            "miDebuggerPath": "/usr/bin/gdb"
+        }
+    ],
+    "inputs": [
+        {
+          "id": "programToTest",
+          "description": "Please enter a path to a program to test",
+          "type": "promptString",
+          "default": "./test/test_program"
+        },
+        {
+            "id": "programToTestArgs",
+            "description": "Please enter space separated, quoted arguments for the program to test",
+            "type": "promptString",
+            "default": "\"arg1\" \"arg2\""
+        }
+    ]
+}
