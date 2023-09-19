@@ -17,8 +17,8 @@
 
 #define _GNU_SOURCE
 #include <dlfcn.h>
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 // typedef for the function pointer to the original malloc function
 typedef void* (*a_malloc)(size_t size);
@@ -49,7 +49,6 @@ static void init_originals(void)
         fprintf(stderr, "Error in `dlsym`: %s\n", dlerror());
         exit(EXIT_FAILURE);
     }
-
 }
 
 void* malloc(size_t size)
@@ -66,7 +65,6 @@ void* malloc(size_t size)
         else {
             exit(EXIT_FAILURE);
         }
-
     }
 
     // call the original malloc function
