@@ -38,7 +38,7 @@
           "id": "programToTest",
           "description": "Please enter a path to a program to test",
           "type": "promptString",
-          "default": "./test/test_program"
+          "default": "./bin/program_to_test"
         },
         {
             "id": "programToTestArgs",

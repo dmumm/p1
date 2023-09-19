@@ -22,31 +22,59 @@
 
 // typedef for the function pointer to the original malloc function
 typedef void* (*a_malloc)(size_t size);
+typedef void* (*a_free)(void* ptr);
 
-__attribute__((constructor)) void shim_init()
-{
-    printf("Shim Init!\n");
-}
+#define NOT !
 
-__attribute__((destructor)) void shim_destroy()
+static a_malloc original_malloc = NULL;
+static a_free original_free = NULL;
+
+// __attribute__((constructor)) void shim_init()
+// {
+//     printf("Shim Init!\n");
+// }
+
+// __attribute__((destructor)) void shim_destroy()
+// {
+//     printf("Shim Done!\n");
+// }
+
+static void init_originals(void)
 {
-    printf("Shim Done!\n");
+
+    original_malloc = dlsym(RTLD_NEXT, "malloc");
+    original_free = dlsym(RTLD_NEXT, "free");
+
+    if (original_malloc == NULL || original_free == NULL) {
+        fprintf(stderr, "Error in `dlsym`: %s\n", dlerror());
+        exit(EXIT_FAILURE);
+    }
+
 }
 
 void* malloc(size_t size)
 {
-    // get the original malloc function
-    a_malloc original_malloc = dlsym(RTLD_NEXT, "malloc");
-    if (original_malloc == NULL) {
-      fprintf(stderr, "Error in `dlsym`: %s\n", dlerror());
-      exit(EXIT_FAILURE);
+    static int initializing = 0;
+
+    if ((original_malloc == NULL || original_free == NULL)) {
+
+        if (NOT initializing) {
+            initializing = 1;
+            init_originals();
+            initializing = 0;
+        }
+        else {
+            exit(EXIT_FAILURE);
+        }
+
     }
 
     // call the original malloc function
     void* ptr = original_malloc(size);
 
-    // print the pointer and size
-    printf("malloc(%zu) = %p\n", size, ptr);
+    // if(NOT initializing) {
+    //     printf("malloc(%zu) = %p\n", size, ptr);
+    // }
 
     // return the pointer
     return ptr;
