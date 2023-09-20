@@ -14,17 +14,14 @@
         Project Name: Project #1: Tracing, System Calls, and Processes
 
 ***********************************************************************************/
-
-#include <limits.h>
+#include <assert.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
 
-#define PATH_MAX 4096
-
 struct userRequest {
-
     int argc;
     char** argv;
     char* thisProgramPath;
@@ -43,7 +40,6 @@ char* cmd_realpath(const char*);
 
 int main(int argc, char** argv)
 {
-
     UserRequest request = processArgs(argc, argv);
 
     fprintf(stdout, "Testing following program call: %s\n", request.testProgramCall); // TODO: delete debug
@@ -54,109 +50,109 @@ int main(int argc, char** argv)
         fprintf(stderr, "Failed to open program to test\n");
         return EXIT_FAILURE;
     }
-
+    pclose(testCommand);
     return EXIT_SUCCESS;
 }
 
 UserRequest processArgs(int argc, char** argv)
 {
-
     const size_t NULL_TERMINATOR_SIZE = 1;
     const size_t SPACE_SIZE = 1;
 
-    UserRequest new;
+    UserRequest newRequest;
 
     if (argc == 1) {
         fprintf(stderr, "ERROR: No arguments given.\n");
         printUsage();
         exit(EXIT_FAILURE);
     }
-    new.argc = argc;
-    new.argv = argv;
+    newRequest.argc = argc;
+    newRequest.argv = argv;
 
     // ### Determining File Paths ### //
 
     // Get path to this program
-    new.thisProgramPath = realpath(argv[0], NULL);
-    if (NULL == new.thisProgramPath) {
+    newRequest.thisProgramPath = realpath(argv[0], NULL);
+    if (! newRequest.thisProgramPath) {
         perror("ERROR: Failed to get real path for argv[0]");
         printUsage();
         exit(EXIT_FAILURE);
     }
 
     // Get path to current working directory
-    char cwd[PATH_MAX];
-    if (getcwd(cwd, sizeof(cwd)) == NULL) {
+    const int MAX_PATH_SIZE = 4096;
+    char rawCurrentWorkingDirectory[MAX_PATH_SIZE];
+    char* getcwdResult = getcwd(rawCurrentWorkingDirectory, sizeof(rawCurrentWorkingDirectory));
+    if (! getcwdResult || strlen(rawCurrentWorkingDirectory) == 0) {
         perror("ERROR: getcwd() error");
         exit(EXIT_FAILURE);
     }
 
     // Process real path to current working directory
-    new.currentWorkingDirectory = realpath(cwd, NULL);
-    if (NULL == new.currentWorkingDirectory) {
+    newRequest.currentWorkingDirectory = realpath(rawCurrentWorkingDirectory, NULL);
+    if (! newRequest.currentWorkingDirectory) {
         perror("ERROR: Failed to get real path for current directory");
         printUsage();
         exit(EXIT_FAILURE);
     }
 
     // Derive path to program to test
-    new.testProgramPath = malloc(sizeof(char) * PATH_MAX);
-    if (NULL == new.testProgramPath) {
+    newRequest.testProgramPath = malloc(sizeof(char) * MAX_PATH_SIZE);
+    if (! newRequest.testProgramPath) {
         perror("ERROR: Memory allocation failed");
         exit(EXIT_FAILURE);
     }
-    snprintf(new.testProgramPath, PATH_MAX, "%s/%s", new.currentWorkingDirectory, argv[1]);
-    size_t len = strlen(new.testProgramPath);
-    if (len == 0) {
-        fprintf(stderr, "Path to requested program has length 0: %s\n", new.testProgramPath);
+    snprintf(newRequest.testProgramPath, MAX_PATH_SIZE, "%s/%s", newRequest.currentWorkingDirectory, argv[1]);
+    size_t length = strlen(newRequest.testProgramPath);
+    if (length == 0) {
+        fprintf(stderr, "Path to requested program has length 0: %s\n", newRequest.testProgramPath);
         printUsage();
         exit(EXIT_FAILURE);
     }
 
     // Resolve optimal path to program to test
-    new.testProgramPathResolved = cmd_realpath(new.testProgramPath);
-    if (NULL == new.testProgramPathResolved) {
+    newRequest.testProgramPathResolved = cmd_realpath(newRequest.testProgramPath);
+    if (! newRequest.testProgramPathResolved) {
         fprintf(stderr, "WARNING: Failed to derive real path to program to test\n");
-        fprintf(stderr, "         Falling back to requested path: %s\n", new.testProgramPath);
-        new.testProgramPathResolved = new.testProgramPath;
+        fprintf(stderr, "         Falling back to requested path: %s\n", newRequest.testProgramPath);
+        newRequest.testProgramPathResolved = newRequest.testProgramPath;
     }
-    if (strlen(new.testProgramPathResolved) == 0) {
+    if (strlen(newRequest.testProgramPathResolved) == 0) {
         fprintf(stderr, "ERROR: Failed to resolve path to program to test\n");
         printUsage();
         exit(EXIT_FAILURE);
     }
 
     // ### Determining Program Call ### //
-    new.testProgramCall = malloc(strlen(new.testProgramPathResolved) + NULL_TERMINATOR_SIZE);
-    strcpy(new.testProgramCall, new.testProgramPathResolved);
+    newRequest.testProgramCall = malloc(strlen(newRequest.testProgramPathResolved) + NULL_TERMINATOR_SIZE);
+    strcpy(newRequest.testProgramCall, newRequest.testProgramPathResolved);
 
     // If no arguments given for requested program, can return before processing
     if (argc == 2) {
-        return new;
+        return newRequest;
     }
 
     // If arguments given for requested program, append them to program call
     for (int i = 2; i < argc; ++i) {
 
-        size_t newLength = strlen(new.testProgramCall) + strlen(argv[i]) + SPACE_SIZE + NULL_TERMINATOR_SIZE;
-        new.testProgramCall = realloc(new.testProgramCall, newLength);
-        if (NULL == new.testProgramCall) {
+        size_t newLength = strlen(newRequest.testProgramCall) + strlen(argv[i]) + SPACE_SIZE + NULL_TERMINATOR_SIZE;
+        newRequest.testProgramCall = realloc(newRequest.testProgramCall, newLength);
+        if (! newRequest.testProgramCall) {
             perror("ERROR: Memory allocation failed");
             printUsage();
             exit(EXIT_FAILURE);
         }
 
-        strncat(new.testProgramCall, " ", SPACE_SIZE);
-        strncat(new.testProgramCall, argv[i], strlen(argv[i]));
+        strncat(newRequest.testProgramCall, " ", SPACE_SIZE);
+        strncat(newRequest.testProgramCall, argv[i], strlen(argv[i]));
     }
 
-    fprintf(stdout, "Processed following program call: %s\n", new.testProgramCall); // TODO: delete debug
-    return new;
+    fprintf(stdout, "Processed following program call: %s\n", newRequest.testProgramCall); // TODO: delete debug
+    return newRequest;
 }
 
 void printUsage()
 {
-
     fprintf(stderr, "Usage: <path/to/leakcount> <path/to/program> [args for program]\n");
     fprintf(stderr, "Usage example: ./leakcount ./my_test_program\n");
     fprintf(stderr, "Usage example: ./leakcount ./my_test_program arg1 arg2\n");
@@ -164,36 +160,43 @@ void printUsage()
 
 char* cmd_realpath(const char* path)
 {
+    const int MAX_PATH_SIZE = 4096;
 
-    char command[PATH_MAX];
+    char command[MAX_PATH_SIZE];
     snprintf(command, sizeof(command), "realpath \"%s\"", path);
 
-    FILE* fp = popen(command, "r");
-    if (fp == NULL) {
+    FILE* realpathPipe = popen(command, "r");
+    if (! realpathPipe) {
         perror("Failed to run command");
         return NULL;
     }
 
-    static char resolvedPath[PATH_MAX];
-    fgets(resolvedPath, sizeof(resolvedPath), fp);
-    if (resolvedPath == NULL) {
+    char resolvedPath[MAX_PATH_SIZE];
+    fgets(resolvedPath, MAX_PATH_SIZE, realpathPipe);
+    assert(ferror(realpathPipe) == 0);
+    if (feof(realpathPipe) || ferror(realpathPipe)) {
         perror("Failed to read command output");
         fprintf(stderr, "Failed to read command output\n");
-        pclose(fp);
+        pclose(realpathPipe);
         return NULL;
     }
+    pclose(realpathPipe);
 
-    size_t len = strlen(resolvedPath);
-    if (len == 0) {
+    size_t length = strlen(resolvedPath);
+    if (length == 0) {
         fprintf(stderr, "Resolved path has length 0\n");
-        pclose(fp);
         return NULL;
     }
-
-    if (resolvedPath[len - 1] == '\n') {
-        resolvedPath[len - 1] = '\0';
+    if (resolvedPath[length - 1] == '\n') {
+        resolvedPath[length - 1] = '\0';
     }
 
-    pclose(fp);
-    return resolvedPath;
+    char* result = malloc(length);
+    if (! result) {
+        perror("Failed to allocate memory for resolved path");
+        return NULL;
+    }
+    strcpy(result, resolvedPath);
+
+    return result;
 }
