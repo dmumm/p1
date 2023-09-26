@@ -1,0 +1,30 @@
+Name: Dylan Mumm
+
+Short description: leakcount utilizes memory_shim.so to record any dynamic memory
+                    allocations, then any freeing of those allocations, to then print out
+                    any memory leakes found.
+
+KNOWN PROBLEMS:
+
+* no sctracer (uhh i thought this was due friday and was trying too hard on those arg parsing...)
+* limited portability, being highly reliant on a fairly recent and comprehensive linux install
+* doesn't seem to be properly calculating absolute paths or programs in $PATH, granted it did in wsl2 ubuntu 22
+* in my wsl2 install it would also work without any ld_preload instructions and im not sure why
+
+DESIGN:
+
+* tried using popen() initially but could not get ld_preload working on the lab computer so i switched to the current implementation which I believe broke some things
+* very close to good argument handling...honestly quite confused as to why there isn't better libraries
+* on my install I initially had a much more organized repo with the makefile but then I realized that was against the rules
+* i spent eeons on double and triple pointers as well as trying to figure out how to properly const them
+    * gave up on the consts when i realized you would need absurd declarations like `char const * const ** const * var`, but only after i tried to way too long to create a typedef scheme that encoded a naming scheme with mutability values of each typedef possibility (dozens)
+* also tried way too long trying to fix bugs regarding not properly dereferencing pointers to matrices
+    * eg (*pSubjectArg)[i] instead of *pSubjectArg[i]
+* also spent like a day on popen() not working that I thought was my vscode / wsl, but rather i forgot about gnu_source
+    * again, thought it was due friday....
+    * learned a ton about clang-tidy and its integration with vscode and Makefile Tools though
+* also learned about the `argv, 10` notation in the vscode w/ gdb debugger, immense help
+
+ANY MATERIALS:
+
+* honestly like hundreds of stack overflows and reddit posts i didn't really organize, many of which went no where. if you want I could export browser history just don't have time right now
