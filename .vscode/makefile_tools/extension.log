@@ -7204,3 +7204,6 @@ Target "all" built successfully.
 Sending telemetry: eventName = build
 properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
 measures: buildTotalElapsedTime = "1.458"
+Configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/arg_utils.h was not found. CppTools will set a default configuration.
+Configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/common_libs.h was not found. CppTools will set a default configuration.
+Configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/utils.h was not found. CppTools will set a default configuration.

@@ -3,7 +3,7 @@
 
 typedef struct request {
     char * currentWorkingDirectory;
-    //char * thisProgramPath;
+    // char * thisProgramPath;
     char * subjectPath;
     char const ** subjectArgs;
     int subjectArgc;

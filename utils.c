@@ -53,7 +53,7 @@ char * realpathCMD(char const * const path)
         return NULL;
     }
     snprintf(result, length, "%s", resolvedPath);
-    //strcpy(result, resolvedPath);
+    // strcpy(result, resolvedPath);
 
     return result;
 }

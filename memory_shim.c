@@ -16,30 +16,31 @@
 ***********************************************************************************/
 
 #include "common_libs.h"
+
 #include <assert.h>
-    #include <dlfcn.h>
+#include <dlfcn.h>
 
 
-typedef void* (*a_malloc)(size_t size);
-typedef void* (*a_free)(void* ptr);
+typedef void * (*a_malloc)(size_t size);
+typedef void * (*a_free)(void * ptr);
 
 struct allocation {
-    void* address;
+    void * address;
     size_t size;
     int isFreed;
-    struct allocation* nextAllocation;
+    struct allocation * nextAllocation;
 };
 typedef struct allocation Allocation;
-static Allocation* allocationHead = NULL;
+static Allocation * allocationHead = NULL;
 
 static a_malloc original_malloc = NULL;
 static a_free original_free = NULL;
 
 static void init_originals(void);
-void* malloc(size_t);
-void free(void* ptr);
-static void record_free(void* memoryBlock);
-static void record_allocation(void* memoryBlock, size_t size);
+void * malloc(size_t);
+void free(void * ptr);
+static void record_free(void * memoryBlock);
+static void record_allocation(void * memoryBlock, size_t size);
 static void print_allocations(void);
 
 __attribute__((constructor)) void shim_init()
@@ -83,7 +84,7 @@ static void init_originals(void)
     }
 }
 
-void* malloc(size_t size)
+void * malloc(size_t size)
 {
     assert(original_malloc != NULL);
     assert(original_free != NULL);
@@ -100,7 +101,7 @@ void* malloc(size_t size)
     //     initializing = 0;
     // }
 
-    void* allocatedMemoryBlock = original_malloc(size);
+    void * allocatedMemoryBlock = original_malloc(size);
     if (! allocatedMemoryBlock) {
         // fprintf(stderr, "Error in `original_malloc`: %s\n", dlerror());
         exit(EXIT_FAILURE);
@@ -111,9 +112,9 @@ void* malloc(size_t size)
     return allocatedMemoryBlock;
 }
 
-static void record_allocation(void* memoryBlock, size_t size)
+static void record_allocation(void * memoryBlock, size_t size)
 {
-    Allocation* newAllocation = original_malloc(sizeof(Allocation));
+    Allocation * newAllocation = original_malloc(sizeof(Allocation));
     if (! newAllocation) {
         // fprintf(stderr, "Error in `original_malloc, failed to record memory leak`: %s\n", dlerror());
         exit(EXIT_FAILURE);
@@ -125,10 +126,9 @@ static void record_allocation(void* memoryBlock, size_t size)
     newAllocation->nextAllocation = allocationHead;
 
     allocationHead = newAllocation;
-
 }
 
-void free(void* requestedMemoryBlock)
+void free(void * requestedMemoryBlock)
 {
     assert(original_malloc != NULL);
     assert(original_free != NULL);
@@ -149,9 +149,9 @@ void free(void* requestedMemoryBlock)
     original_free(requestedMemoryBlock);
 }
 
-static void record_free(void* memoryBlock)
+static void record_free(void * memoryBlock)
 {
-    Allocation* currentAllocation = allocationHead;
+    Allocation * currentAllocation = allocationHead;
     while (currentAllocation) {
         if (currentAllocation->address == memoryBlock) {
             currentAllocation->isFreed = 1;
@@ -159,12 +159,11 @@ static void record_free(void* memoryBlock)
         }
         currentAllocation = currentAllocation->nextAllocation;
     }
-
 }
 
 static void print_allocations(void)
 {
-    Allocation* currentAllocation = allocationHead;
+    Allocation * currentAllocation = allocationHead;
     int leakCount = 0;
     size_t byteCount = 0;
     while (currentAllocation) {
@@ -175,5 +174,5 @@ static void print_allocations(void)
         }
         currentAllocation = currentAllocation->nextAllocation;
     }
-    fprintf(stderr,"TOTAL\t%d\t%zu\n",leakCount, byteCount);
+    fprintf(stderr, "TOTAL\t%d\t%zu\n", leakCount, byteCount);
 }
