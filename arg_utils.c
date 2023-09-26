@@ -99,6 +99,7 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
     // Getting real path to subject program //
 
     char * rawPath = (char *)malloc(MAX_PATH_SIZE);
+    char command[MAX_PATH_SIZE];
 
     // Determine if path given is absolute, relative, or just a program name
 
@@ -113,8 +114,6 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
         break;
 
     default: // Program name given
-        // fprintf(stderr, "Warning: No path given for program to test. Assuming '%s' is in PATH", inputPath);
-        char command[MAX_PATH_SIZE];
         snprintf(command, MAX_PATH_SIZE, "which %s", inputPath);
         FILE * whichPipe = popen(command, "r");
         if (! whichPipe) {

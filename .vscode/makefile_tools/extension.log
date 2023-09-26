@@ -7184,3 +7184,23 @@ Created the following debug config:
    symbolSearchPath = undefined
 Sending telemetry: eventName = debug
 properties: status = "success"
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "6.789"
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.458"
