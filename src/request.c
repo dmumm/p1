@@ -8,12 +8,12 @@
 
 void freeRequest(Request * const pRequest)
 {
-    for(int i = 0; i < pRequest->subjectArgc; i++) {
-        free((char*) pRequest->subjectArgs[i]);
+    for (int i = 0; i < pRequest->subjectArgc; i++) {
+        free((char *)pRequest->subjectArgs[i]);
     }
     free(pRequest->subjectArgs);
     free(pRequest->currentWorkingDirectory);
-    //free(pRequest->thisProgramPath);
+    // free(pRequest->thisProgramPath);
     free(pRequest->subjectCall);
     free(pRequest->subjectPath);
 }
@@ -91,7 +91,7 @@ char * simpleArgv(char const *** argv_pointers, int * newArgc, int argc, char co
 
     // Allocate memory for concatenated strings
     size_t dataSize = totalLength * sizeof(char);
-    if(dataSize == 0) {
+    if (dataSize == 0) {
         perror("Failed to allocate memory for newArgv");
         exit(EXIT_FAILURE);
     }
@@ -102,7 +102,7 @@ char * simpleArgv(char const *** argv_pointers, int * newArgc, int argc, char co
     }
 
     size_t indexesSize = argc * sizeof(char *);
-    if(indexesSize == 0) {
+    if (indexesSize == 0) {
         perror("Failed to allocate memory for argv_pointers");
         exit(EXIT_FAILURE);
     }
@@ -147,23 +147,24 @@ void processArgs(Request * const pRequest, int const argc, char const ** const a
     char * argv_data = simpleArgv(&argv_pointers, &newArgc, argc, argv);
     assert(argc == newArgc);
     standardizeSubjectArgs(pRequest, newArgc, &argv_pointers, argv_data);
+    free(argv_data);
+    free(argv_pointers);
 
     // // ### Determining File Paths ### //
 
-    //char* rawCWD = argv_pointers[0];
-    //char* rawSubjectPath = pRequest->subjectArgs[0];
+    // char* rawCWD = argv_pointers[0];
+    // char* rawSubjectPath = pRequest->subjectArgs[0];
 
-     deriveSubjectPath(pRequest, pRequest->subjectArgs[0]);
+    deriveSubjectPath(pRequest, pRequest->subjectArgs[0]);
 
     // ### Determining Program Call ### //
 
-    pRequest->subjectCall = (char*)malloc(MAX_PATH_SIZE);
+    pRequest->subjectCall = (char *)malloc(MAX_PATH_SIZE);
     snprintf(pRequest->subjectCall, MAX_PATH_SIZE, "%s", pRequest->subjectPath);
 
 
     // If no arguments given for requested program, can return before processing
     if (pRequest->subjectArgc == 1) {
-        // free(); // TODO: free whatever is allocated
         return;
     }
 
@@ -171,7 +172,7 @@ void processArgs(Request * const pRequest, int const argc, char const ** const a
     for (int i = 1; i < pRequest->subjectArgc; ++i) {
 
         size_t newLength = strlen(pRequest->subjectCall) + strlen(pRequest->subjectArgs[i]) + SPACE_SIZE + NULL_TERMINATOR_SIZE;
-        pRequest->subjectCall = (char*)realloc(pRequest->subjectCall, newLength);
+        pRequest->subjectCall = (char *)realloc(pRequest->subjectCall, newLength);
 
         if (! pRequest->subjectCall) {
             perror("ERROR: Memory allocation failed");
@@ -183,7 +184,6 @@ void processArgs(Request * const pRequest, int const argc, char const ** const a
         strncat(pRequest->subjectCall, pRequest->subjectArgs[i], strlen(pRequest->subjectArgs[i]));
     }
 
-    free(argv_data);
-    free(argv_pointers);
+
     return;
 }

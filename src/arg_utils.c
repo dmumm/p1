@@ -22,6 +22,7 @@ void standardizeSubjectArgs(Request * const request, int const argc, char const 
 
     request->subjectArgs = subjectArgv;
     request->subjectArgc = subjectArgc;
+
 }
 
 char const * parseArg(char const *** const pSubjectArgv, char const * charIterator, int * const subjectArgc)
@@ -154,7 +155,6 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
     if (strlen(resolvedAbsolutePath) == 0) {
         printUsage("ERROR: Failed to resolve path to program to test\n");
         free(resolvedAbsolutePath);
-        free(rawPath);
         free(resolvedCWD);
         exit(EXIT_FAILURE);
     }

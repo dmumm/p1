@@ -316,3 +316,4 @@ Target "all" built successfully.
 Sending telemetry: eventName = build
 properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
 measures: buildTotalElapsedTime = "1.433"
+Sending telemetry: eventName = makeBaseDirectory

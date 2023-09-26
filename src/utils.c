@@ -50,7 +50,8 @@ char * realpathCMD(char const * const path)
         perror("Failed to allocate memory for resolved path");
         return NULL;
     }
-    strcpy(result, resolvedPath);
+    snprintf(result, length, "%s", resolvedPath);
+    //strcpy(result, resolvedPath);
 
     return result;
 }
