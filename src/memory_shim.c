@@ -15,11 +15,10 @@
 
 ***********************************************************************************/
 
-#define _GNU_SOURCE
+#include "common_libs.h"
 #include <assert.h>
 #include <dlfcn.h>
-#include <stdio.h>
-#include <stdlib.h>
+
 
 typedef void* (*a_malloc)(size_t size);
 typedef void* (*a_free)(void* ptr);
@@ -59,15 +58,17 @@ __attribute__((constructor)) void shim_init()
         init_originals();
         initializing = 0;
     }
-
-    printf("Shim Init!\n");
+    fprintf(stderr,"Shim Init!\n");
 }
 
 __attribute__((destructor)) void shim_destroy()
 {
     assert(original_malloc != NULL);
     assert(original_free != NULL);
-    printf("Shim Done!\n");
+
+    print_allocations();
+
+    fprintf(stderr,"Shim Done!\n");
 }
 
 static void init_originals(void)
@@ -99,15 +100,15 @@ void* malloc(size_t size)
     //     initializing = 0;
     // }
 
-    void* requestedMemoryBlock = original_malloc(size);
-    if (! requestedMemoryBlock) {
+    void* allocatedMemoryBlock = original_malloc(size);
+    if (! allocatedMemoryBlock) {
         fprintf(stderr, "Error in `original_malloc`: %s\n", dlerror());
         exit(EXIT_FAILURE);
     }
 
+    record_allocation(allocatedMemoryBlock, size);
 
-
-    return requestedMemoryBlock;
+    return allocatedMemoryBlock;
 }
 
 static void record_allocation(void* memoryBlock, size_t size)
@@ -143,6 +144,7 @@ void free(void* requestedMemoryBlock)
     //     init_originals();
     //     initializing = 0;
     // }
+
     record_free(requestedMemoryBlock);
     original_free(requestedMemoryBlock);
 }
@@ -150,7 +152,7 @@ void free(void* requestedMemoryBlock)
 static void record_free(void* memoryBlock)
 {
     Allocation* currentAllocation = allocationHead;
-    while (! currentAllocation) {
+    while (currentAllocation) {
         if (currentAllocation->address == memoryBlock) {
             currentAllocation->isFreed = 1;
             return;
@@ -164,12 +166,14 @@ static void print_allocations(void)
 {
     Allocation* currentAllocation = allocationHead;
     int leakCount = 0;
-    while (! currentAllocation) {
-        if (currentAllocation->isFreed) {
+    size_t byteCount = 0;
+    while (currentAllocation) {
+        if (! currentAllocation->isFreed) {
             leakCount++;
-            fprintf("stderr","LEAK\t%zu\n",currentAllocation->size);
+            byteCount = byteCount + currentAllocation->size;
+            fprintf(stderr, "LEAK\t%zu\n", currentAllocation->size);
         }
         currentAllocation = currentAllocation->nextAllocation;
     }
-    fprintf("stderr","TOTAL\t%d\t%zu\n",leakCount, currentAllocation->size);
+    fprintf(stderr,"TOTAL\t%d\t%zu\n",leakCount, byteCount);
 }

@@ -3,7 +3,7 @@
 		{
 			"path": ".."
 		}
-    ],
+	],
     "settings": {
         "editor.detectIndentation": false,
         "makefile.makefilePath": "${workspaceRoot}/Makefile",
@@ -49,9 +49,9 @@
         "makefile.compileCommandsPath": "${workspaceRoot}/.vscode/compile_commands.json",
         "makefile.configurationCachePath": "${workspaceRoot}/.vscode/makefile_tools/configurationCache.json",
         "C_Cpp.codeAnalysis.clangTidy.enabled": true,
-        "editor.fontSize": 14,
-        "files.associations": {
-            "string.h": "c"
-        },
+        "editor.fontSize": 16,
+        "debug.console.fontSize": 20,
+        "chat.editor.fontSize": 20,
+        "terminal.integrated.fontSize": 16,
         }
 }

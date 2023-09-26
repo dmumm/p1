@@ -1,3 +1,11 @@
 {
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "C_Cpp.codeAnalysis.runAutomatically": true,
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.codeAnalysis.exclude": {
+
+    },
+    "files.exclude": {
+        ".reference/cpsc3220-f23-public": true
+    }
 }

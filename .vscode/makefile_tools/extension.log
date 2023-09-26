@@ -1,0 +1,318 @@
+Logging level: Debug
+Sending telemetry: eventName = varexp
+properties: setting = "configurationCachePath",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}/.vscode/makefile_tools/configurationCache.json' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/configurationCache.json' for setting 'configurationCachePath'.
+Configurations cached at /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/configurationCache.json
+Sending telemetry: eventName = varexp
+properties: setting = "makefilePath",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}/Makefile' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile' for setting 'makefilePath'.
+Sending telemetry: eventName = varexp
+properties: setting = "makeDirectory",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1' for setting 'makeDirectory'.
+Sending telemetry: eventName = varexp
+properties: setting = "buildLog",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}/.vscode/makefile_tools/build.log' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/build.log' for setting 'buildLog'.
+Build log defined at "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/build.log"
+Build log not found on disk.
+Always pre-configure: false
+Dry-run switches: '--always-make', '--keep-going', '--print-directory'
+Additional compiler names: 'clang-tidy', 'gcc'
+Sending telemetry: eventName = varexp
+properties: setting = "configurations.0.makeDirectory",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1' for setting 'configurations.0.makeDirectory'.
+Sending telemetry: eventName = varexp
+properties: setting = "configurations.0.makefilePath",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}/Makefile' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile' for setting 'configurations.0.makefilePath'.
+Found the following configurations defined in makefile.configurations setting: myTestDefault
+Sending telemetry: eventName = varexp
+properties: setting = "launchConfigurations.0.cwd",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1' for setting 'launchConfigurations.0.cwd'.
+Sending telemetry: eventName = varexp
+properties: setting = "launchConfigurations.0.binaryPath",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}/bin' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin' for setting 'launchConfigurations.0.binaryPath'.
+Reading current launch configuration "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>leakcount()" from the workspace state.
+Default launch configuration: MIMode = undefined,
+                    miDebuggerPath = undefined,
+                    stopAtEntry = undefined,
+                    symbolSearchPath = undefined
+Configure on open: true
+Configure on edit: true
+Configure after command: true
+Only .PHONY targets: false
+Save before build or configure: true
+Build before launch: true
+Clear output before build: true
+Ignore directory commands: true
+Sending telemetry: eventName = varexp
+properties: setting = "compileCommandsPath",pattern = "workspaceRoot"
+Expanding from '${workspaceRoot}/.vscode/compile_commands.json' to '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/compile_commands.json' for setting 'compileCommandsPath'.
+compile_commands.json path: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/compile_commands.json
+Deduced command '/usr/bin/make -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1' for configuration "myTestDefault"
+Saving opened files before build.
+Configuring from cache: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/configurationCache.json
+Load configuration from cache elapsed time: 0.175
+Sending Workspace Browse Configuration: -----------------------------------
+    Browse Path: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src;/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/test_src
+    Standard: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;test_build/test_program.o;test_src/test_program.c
+----------------------------------------------------------------------------
+Sending configuration (from cache) for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/memory_shim.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-shared;-fPIC;src/memory_shim.c;-o;bin/memory_shim.so;-ldl
+---------------------------------------------------------------------------------------------------
+Sending configuration (from cache) for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/main.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/main.o;src/main.c
+---------------------------------------------------------------------------------------------------
+Sending configuration (from cache) for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/utils.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/utils.o;src/utils.c
+---------------------------------------------------------------------------------------------------
+Sending configuration (from cache) for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/request.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/request.o;src/request.c
+---------------------------------------------------------------------------------------------------
+Sending configuration (from cache) for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/arg_utils.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/arg_utils.o;src/arg_utils.c
+---------------------------------------------------------------------------------------------------
+Sending configuration (from cache) for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/test_src/test_program.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;test_build/test_program.o;test_src/test_program.c
+---------------------------------------------------------------------------------------------------
+Generating in the background a new configuration cache with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 --dry-run --always-make --keep-going --print-directory'
+Writing the dry-run output: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/dryrun.log
+Spawning child process with:
+ process name: /usr/bin/make
+ process args: all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1,--dry-run,--always-make,--keep-going,--print-directory
+ working directory: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+ shell type: default
+Generating dry-run elapsed time: 0.39
+Preprocessing: "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/dryrun.log"
+Preprocess elapsed time: 0
+Parsing for IntelliSense.
+Updating the CppTools IntelliSense Configuration Provider.
+Parsing dry-run output for CppTools Custom Configuration Provider.
+Analyzing line: make: Entering directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+MAKE -C: entering directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -c -o build/memory_shim.o src/memory_shim.c
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/memory_shim.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/memory_shim.o;src/memory_shim.c
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -c -o build/main.o src/main.c
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/main.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/main.o;src/main.c
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -c -o build/utils.o src/utils.c
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/utils.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/utils.o;src/utils.c
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -c -o build/request.o src/request.c
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/request.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/request.o;src/request.c
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -c -o build/arg_utils.o src/arg_utils.c
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/arg_utils.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;build/arg_utils.o;src/arg_utils.c
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Lbuild build/memory_shim.o build/main.o build/utils.o build/request.o build/arg_utils.o -o bin/leakcount 
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -shared -fPIC src/memory_shim.c -o bin/memory_shim.so -ldl
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/memory_shim.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-shared;-fPIC;src/memory_shim.c;-o;bin/memory_shim.so;-ldl
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Isrc -Wall -ggdb -O0 -c -o test_build/test_program.o test_src/test_program.c
+Sending configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/test_src/test_program.c -----------------------------------
+    Defines: 
+    Includes: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src
+    Force Includes: 
+    Standard: undefined
+    IntelliSense Mode: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: 
+---------------------------------------------------------------------------------------------------
+Found compiler command: gcc -Lbuild test_build/test_program.o -o bin/program_to_test 
+Analyzing line: make: Leaving directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+POPD command or end of MAKE -C: leaving directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 and entering directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending Workspace Browse Configuration: -----------------------------------
+    Browse Path: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src;/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/test_src
+    Standard: undefined
+    Compiler Path: /usr/bin/gcc
+    Compiler Arguments: -Wall;-ggdb;-O0;-c;-o;test_build/test_program.o;test_src/test_program.c
+----------------------------------------------------------------------------
+Parsing for IntelliSense elapsed time: 0.398
+Parsing for launch targets.
+Analyzing line: make: Entering directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+MAKE -C: entering directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Found linker command: gcc -Lbuild build/memory_shim.o build/main.o build/utils.o build/request.o build/arg_utils.o -o bin/leakcount 
+Producing target binary: bin/leakcount
+Adding launch configuration:
+/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>leakcount()
+Found linker command: gcc -Lbuild test_build/test_program.o -o bin/program_to_test 
+Producing target binary: bin/program_to_test
+Adding launch configuration:
+/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>program_to_test()
+Analyzing line: make: Leaving directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+POPD command or end of MAKE -C: leaving directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 and entering directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Analyzing line: make: Entering directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+MAKE -C: entering directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Analyzing line: make: Leaving directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+POPD command or end of MAKE -C: leaving directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 and entering directory /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Found the following 2 launch targets defined in the makefile: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>leakcount();/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>program_to_test()
+Complete list of launch targets: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>leakcount();/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin>program_to_test()
+Parsing for launch targets elapsed time: 0.041
+Generating parse content for build targets.
+Generating targets information with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 --print-data-base --no-builtin-variables --no-builtin-rules --question'
+Writing the dry-run output: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/targets.log
+Spawning child process with:
+ process name: /usr/bin/make
+ process args: all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1,--print-data-base,--no-builtin-variables,--no-builtin-rules,--question
+ working directory: /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+ shell type: default
+Generating dry-run elapsed time: 0.03
+Parsing for build targets from: "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/.vscode/makefile_tools/targets.log"
+Found the following 6 build targets defined in the makefile: all;bin/leakcount;bin/memory_shim.so;bin/program_to_test;clean;run
+Complete list of build targets: all;bin/leakcount;bin/memory_shim.so;bin/program_to_test;clean;run
+Parsing build targets elapsed time: 0.015
+Configure finished. The status for all the subphases that ran:
+loadFromCache: return code = 0, elapsed time = 0.175
+generateParseContent: return code = 0, elapsed time = 0.39
+preprocessParseContent: return code = 0, elapsed time = 0
+parseIntelliSense: return code = 0, elapsed time = 0.398
+parseLaunch: return code = 0, elapsed time = 0.041
+dryrunTargets: return code = 1, elapsed time = 0.03
+parseTargets: return code = 0, elapsed time = 0.015
+Configure succeeded.
+Sending telemetry: eventName = configure
+properties: firstTime = "false",makeDryRun = "true",readCache = "true",isClean = "true",processTargetsSeparately = "false",resetBuildTarget = "false",triggeredBy = "configure dirty (on open), settings (configureOnOpen)",buildTarget = "all"
+measures: numberBuildTargets = "6",numberLaunchTargets = "2",numberIndexedSourceFiles = "6",numberMakefileConfigurations = "1",totalElapsedTime = "1.359",exitCode = "0",loadFromCache.exitCode = "0",loadFromCache.elapsed = "0.175",generateParseContent.exitCode = "0",generateParseContent.elapsed = "0.39",preprocessParseContent.exitCode = "0",preprocessParseContent.elapsed = "0",parseIntelliSense.exitCode = "0",parseIntelliSense.elapsed = "0.398",parseLaunch.exitCode = "0",parseLaunch.elapsed = "0.041",dryrunTargets.exitCode = "1",dryrunTargets.elapsed = "0.03",parseTargets.exitCode = "0",parseTargets.elapsed = "0.015"
+Configure elapsed time: 1.359
+Sending telemetry: eventName = settings
+properties: makefile.configurations.name = "...",makefile.configurations.makeDirectory = "...",makefile.configurations.makefilePath = "...",makefile.configurations.makePath = "...",makefile.launchConfigurations.cwd = "...",makefile.launchConfigurations.binaryPath = "...",makefile.makePath = "...",makefile.makeDirectory = "...",makefile.makefilePath = "...",makefile.buildLog = "...",makefile.extensionOutputFolder = "...",makefile.extensionLog = "...",makefile.configurationCachePath = "...",makefile.additionalCompilerNames = "...",makefile.compileCommandsPath = "..."
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.298"
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.032"
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.181"
+Configuration for file /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/arg_utils.h was not found. CppTools will set a default configuration.
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.117"
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.192"
+Saving opened files before build.
+Building target "all" with command: '/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+Executing task: "Makefile Tools Build Task" with quoting style "Strong"
+ command name: /usr/bin/make
+ command args all,-f,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile,-C,/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
+Sending telemetry: eventName = makeBaseDirectory
+Target "all" built successfully.
+Sending telemetry: eventName = build
+properties: exitCode = "0",target = "all",triggeredBy = "command pallette (buildTarget)"
+measures: buildTotalElapsedTime = "1.433"

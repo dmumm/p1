@@ -5,13 +5,40 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C: make, run, and debug leakcount",
+            "name": "C: make, run, and debug leakcount, unquoted args",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/bin/leakcount",
             "args": [
                 "${input:programToTest}",
                 "${input:programToTestArgs}"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "make all",
+            "miDebuggerPath": "/usr/bin/gdb"
+        },
+        {
+            "name": "C: make, run, and debug leakcount, quoted args",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/bin/leakcount",
+            "args": [
+                "${input:programToTestAndArgs}",
             ],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
@@ -45,6 +72,12 @@
             "description": "Please enter space separated, quoted arguments for the program to test",
             "type": "promptString",
             "default": "\"arg1\" \"arg2\""
+        },
+        {
+            "id": "programToTestAndArgs",
+            "description": "Please enter path to program to test as well as space separated, unquoted arguments for the program",
+            "type": "promptString",
+            "default": "./bin/program_to_test arg1 arg2"
         }
     ]
 }

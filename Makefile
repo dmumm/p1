@@ -8,7 +8,7 @@ CFLAGS=-Isrc -Wall -ggdb -O0
 LDFLAGS=-Lbuild
 
 # Libraries to link
-LDLIBS=-lm
+LDLIBS=
 
 # Directories
 SRCDIR=src
@@ -32,7 +32,7 @@ TESTSOURCES=$(shell find $(TESTSRCDIR) -type f -name "*.$(SRCEXT)")
 # Generate object files for all test source files
 TESTOBJECTS=$(patsubst $(TESTSRCDIR)/%,$(TESTBUILDDIR)/%,$(TESTSOURCES:.$(SRCEXT)=.o))
 
-# Name of the executable
+# Names for make run
 EXECUTABLE=leakcount
 TEST_EXECUTABLE=program_to_test
 TEST_EXECUTABLE_ARGS=arg1 arg2
@@ -68,6 +68,7 @@ $(TESTBUILDDIR)/%.o: $(TESTSRCDIR)/%.$(SRCEXT)
 clean:
 	$(RM) -r $(BUILDDIR) $(TESTBUILDDIR) $(BINDIR)
 
+# Run with specified arguments
 run:
 	$(BINDIR)/$(EXECUTABLE) $(BINDIR)/$(TEST_EXECUTABLE) $(TEST_EXECUTABLE_ARGS)
 
