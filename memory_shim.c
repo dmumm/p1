@@ -139,16 +139,40 @@ static void record_free(void * memoryBlock)
 
 static void print_allocations(void)
 {
+    // Allocation * currentAllocation = allocationHead;
+    // int leakCount = 0;
+    // size_t byteCount = 0;
+    // while (currentAllocation) {
+    //     if (! currentAllocation->isFreed) {
+    //         leakCount++;
+    //         byteCount = byteCount + currentAllocation->size;
+    //         fprintf(stderr, "LEAK\t%zu\n", currentAllocation->size);
+    //     }
+    //     currentAllocation = currentAllocation->nextAllocation;
+    // }
+    // fprintf(stderr, "TOTAL\t%d\t%zu\n", leakCount, byteCount);
+
+    Allocation * stack[1000]; // Adjust the size if necessary
+    int top = -1;
+
     Allocation * currentAllocation = allocationHead;
     int leakCount = 0;
     size_t byteCount = 0;
+
+    // Traverse and push into the stack
     while (currentAllocation) {
         if (! currentAllocation->isFreed) {
+            stack[++top] = currentAllocation;
             leakCount++;
             byteCount = byteCount + currentAllocation->size;
-            fprintf(stderr, "LEAK\t%zu\n", currentAllocation->size);
         }
         currentAllocation = currentAllocation->nextAllocation;
+    }
+
+    // Pop from stack and print
+    while (top != -1) {
+        Allocation * item = stack[top--];
+        fprintf(stderr, "LEAK\t%zu\n", item->size);
     }
     fprintf(stderr, "TOTAL\t%d\t%zu\n", leakCount, byteCount);
 }
