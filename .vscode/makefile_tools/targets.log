@@ -1,5 +1,6 @@
 /usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 --print-data-base --no-builtin-variables --no-builtin-rules --question
 # make: Entering directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
+ 
 # GNU Make 4.3
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2020 Free Software Foundation, Inc.
@@ -7,26 +8,22 @@
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Sep 26 07:50:00 2023
+# Make data base, printed on Tue Sep 26 11:29:58 2023
 
 # Variables
 
 # environment
 LC_ALL = C
-# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 38)
-TEST_EXECUTABLE_ARGS = arg1 arg2
 # environment
 PULSE_SERVER = unix:/mnt/wslg/PulseServer
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 18)
-BINDIR = bin
+BINDIR = .
 # environment
 WSLENV = VSCODE_WSL_EXT_LOCATION/up
 # environment
 VSCODE_CWD = /mnt/c/Users/bowse/AppData/Local/Programs/Microsoft VS Code Insiders
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 15)
-TESTSRCDIR = test_src
-# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 33)
-TESTOBJECTS = $(patsubst $(TESTSRCDIR)/%,$(TESTBUILDDIR)/%,$(TESTSOURCES:.$(SRCEXT)=.o))
+TESTSRCDIR = ../
 # default
 MAKE_COMMAND := /usr/bin/make
 # environment
@@ -34,6 +31,7 @@ VSCODE_HANDLES_SIGPIPE = true
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
+ 
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
 .VARIABLES := 
@@ -58,7 +56,7 @@ VSCODE_WSL_DEBUG_INFO = true
 # makefile
 MAKEFLAGS = pqrRw
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 17)
-TESTBUILDDIR = test_build
+TESTBUILDDIR = ../
 # makefile
 CURDIR := /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1
 # environment
@@ -73,8 +71,6 @@ VSCODE_L10N_BUNDLE_LOCATION =
 MFLAGS = -pqrRw
 # default
 .SHELLFLAGS := -c
-# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 37)
-TEST_EXECUTABLE = program_to_test
 # environment
 WSL2_GUI_APPS_ENABLED = 1
 # environment
@@ -115,8 +111,6 @@ MOTD_SHOWN = update-motd
 ^F = $(notdir $^)
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 11)
 LDLIBS = 
-# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 30)
-TESTSOURCES = $(shell find $(TESTSRCDIR) -type f -name "*.$(SRCEXT)")
 # environment
 LESSCLOSE = /usr/bin/lesspipe %s %s
 # automatic
@@ -153,7 +147,7 @@ MAKE_VERSION := 4.3
 .SHELLSTATUS := 0
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 8)
 LDFLAGS = -Lbuild
-# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 36)
+# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 30)
 EXECUTABLE = leakcount
 # environment
 _ = /home/dmumm/.vscode-server-insiders/bin/c72447e8d8aaa7497c9a4bd68bc4301584b92beb/node
@@ -171,10 +165,10 @@ HOME = /home/dmumm
 ELECTRON_RUN_AS_NODE = 1
 # environment
 TERM = xterm-256color
-# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 39)
+# makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 31)
 SHIM_LIBRARY = memory_shim
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 14)
-SRCDIR = src
+SRCDIR = .
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -188,11 +182,11 @@ WSL_DISTRO_NAME = Ubuntu-22.04
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 2)
 CC = gcc
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 16)
-BUILDDIR = build
+BUILDDIR = .
 # makefile (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 24)
 SOURCES = $(shell find $(SRCDIR) -type f -name "*.$(SRCEXT)")
 # variable set hash-table stats:
-# Load=90/1024=9%, Rehash=0, Collisions=2/168=1%
+# Load=86/1024=8%, Rehash=0, Collisions=2/155=1%
 
 # Pattern-specific Variable Values
 
@@ -200,45 +194,28 @@ SOURCES = $(shell find $(SRCDIR) -type f -name "*.$(SRCEXT)")
 
 # Directories
 
-# src (device 2080, inode 27101): No files, no impossibilities so far.
-# test_src (device 2080, inode 96784): No files, no impossibilities so far.
+# ../ (device 2080, inode 96719): No files, no impossibilities so far.
 
-# No files, no impossibilities in 2 directories.
+# No files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
-build/%.o: src/%.c
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 55):
-	mkdir -p $(BUILDDIR)
+%.o: %.c
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 46):
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-test_build/%.o: test_src/%.c
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 64):
-	mkdir -p $(TESTBUILDDIR)
+..//%.o: ..//%.c
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 53):
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 # 2 implicit rules, 0 (0.0%) terminal.
 # Files
 
 # Not a target:
-build/request.o:
+memory_shim.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-test_build/test_program.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-bin/leakcount: build/memory_shim.o build/main.o build/utils.o build/request.o build/arg_utils.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 50):
-	mkdir -p $(BINDIR)
-	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
 
 clean:
 #  Phony target (prerequisite of .PHONY).
@@ -264,22 +241,19 @@ clean:
 # automatic
 # | := 
 # variable set hash-table stats:
-# Load=8/32=25%, Rehash=0, Collisions=11/15=73%
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 69):
-	$(RM) -r $(BUILDDIR) $(TESTBUILDDIR) $(BINDIR)
+# Load=8/32=25%, Rehash=0, Collisions=1/16=6%
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 57):
+	$(RM) -r *.o
+	$(RM) -r ../*.o
+	$(RM) -r *.so
+	$(RM) -r $(EXECUTABLE)
 
-# Not a target:
-build/memory_shim.o:
+memory_shim.so: memory_shim.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-build/utils.o:
- 
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 38):
+	$(CC) $(CFLAGS) -shared -fPIC $(SRCDIR)/$(SHIM_LIBRARY).c -o $(BINDIR)/$(SHIM_LIBRARY).so -ldl
 
 # Not a target:
 .DEFAULT:
@@ -287,49 +261,54 @@ build/utils.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-all: clean bin/leakcount bin/memory_shim.so bin/program_to_test
+all: clean leakcount memory_shim.so ./
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
-# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
+# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
 
 run:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 73):
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 65):
 	$(BINDIR)/$(EXECUTABLE) $(BINDIR)/$(TEST_EXECUTABLE) $(TEST_EXECUTABLE_ARGS)
 
-# Not a target:
-build/arg_utils.o:
+leakcount: memory_shim.o main.o utils.o request.o arg_utils.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-
-# Not a target:
-src/memory_shim.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
-bin/memory_shim.so: src/memory_shim.c
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 46):
-	$(CC) $(CFLAGS) -shared -fPIC $(SRCDIR)/$(SHIM_LIBRARY).c -o $(BINDIR)/$(SHIM_LIBRARY).so -ldl
-
-bin/program_to_test: test_build/test_program.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 59):
-	mkdir -p $(BINDIR)
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 42):
 	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+
+# Not a target:
+main.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+./:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile', line 49):
+	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+
+# Not a target:
+request.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+memory_shim.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 .SUFFIXES:
@@ -340,12 +319,12 @@ bin/program_to_test: test_build/test_program.o
 # Not a target:
 /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2023-09-21 11:25:44.516271723
+#  Last modified 2023-09-26 11:11:11.049359089
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
-build/main.o:
+utils.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -355,21 +334,27 @@ build/main.o:
 #  Modification time never checked.
 #  File has not been updated.
 
+# Not a target:
+arg_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 # files hash-table stats:
-# Load=17/1024=2%, Rehash=0, Collisions=0/46=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/44=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 26 / storage = 424 B / avg = 16 B
-# current buf: size = 8162 B / used = 424 B / count = 26 / avg = 16 B
+# strcache buffers: 1 (0) / strings = 24 / storage = 308 B / avg = 12 B
+# current buf: size = 8162 B / used = 308 B / count = 24 / avg = 12 B
 
-# strcache performance: lookups = 44 / hit rate = 40%
+# strcache performance: lookups = 42 / hit rate = 42%
 # hash-table stats:
-# Load=26/8192=0%, Rehash=0, Collisions=0/44=0%
-# Finished Make data base on Tue Sep 26 07:50:00 2023
+# Load=24/8192=0%, Rehash=0, Collisions=0/42=0%
+# Finished Make data base on Tue Sep 26 11:29:58 2023
 
 # make: Leaving directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
  

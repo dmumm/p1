@@ -15,11 +15,6 @@
 
 // ***********************************************************************************/
 
-// #include <assert.h>
-
-// #include <string.h>
-// #include <unistd.h>
-
 #include "common_libs.h"
 #include "request.h"
 #include "utils.h"
@@ -27,32 +22,15 @@
 int main(int argc, char const ** const argv)
 {
 
-
-    // ./test "./program "two  word arg""
-    // ./test
-    // ./program
-    // two word arg
-    // ./test "./program arg1 arg2"
-    // ./test
-    // ./program
-    // arg1
-    // arg2
-    // ./test "./program "arg1" "arg2""
-    // ./test
-    // ./program
-    // arg1
-    // arg2
-
     static Request request;
 
     processArgs(&request, argc, argv);
 
-    fprintf(stderr, "Testing following program call: %s\n", request.subjectCall); // TODO: delete debug
-
+    // fprintf(stderr, "Testing following program call: %s\n", request.subjectCall); // TODO: delete debug
     FILE * testCommand = popen(request.subjectCall, "r");
     if (testCommand == NULL) {
         perror("Failed to open program to test");
-        printUsage("Failed to open program to test\n");
+        // printUsage("Failed to open program to test\n");
         return EXIT_FAILURE;
     }
     pclose(testCommand);

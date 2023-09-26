@@ -1,22 +1,10 @@
-/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 --dry-run --always-make --keep-going --print-directory
+/usr/bin/make all -f /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/Makefile -C /home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1 --dry-run --keep-going --print-directory
 make: Entering directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
-rm -f -r build test_build bin
-mkdir -p build
-gcc -Isrc -Wall -ggdb -O0 -c -o build/memory_shim.o src/memory_shim.c
-mkdir -p build
-gcc -Isrc -Wall -ggdb -O0 -c -o build/main.o src/main.c
-mkdir -p build
-gcc -Isrc -Wall -ggdb -O0 -c -o build/utils.o src/utils.c
-mkdir -p build
-gcc -Isrc -Wall -ggdb -O0 -c -o build/request.o src/request.c
-mkdir -p build
-gcc -Isrc -Wall -ggdb -O0 -c -o build/arg_utils.o src/arg_utils.c
-mkdir -p bin
-gcc -Lbuild build/memory_shim.o build/main.o build/utils.o build/request.o build/arg_utils.o -o bin/leakcount 
-gcc -Isrc -Wall -ggdb -O0 -shared -fPIC src/memory_shim.c -o bin/memory_shim.so -ldl
-mkdir -p test_build
-gcc -Isrc -Wall -ggdb -O0 -c -o test_build/test_program.o test_src/test_program.c
-mkdir -p bin
-gcc -Lbuild test_build/test_program.o -o bin/program_to_test 
+ 
+rm -f -r *.o
+rm -f -r ../*.o
+rm -f -r *.so
+rm -f -r leakcount
+ 
 make: Leaving directory '/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1'
  

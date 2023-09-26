@@ -47,7 +47,7 @@ __attribute__((constructor)) void shim_init()
     static int initializing = 0;
     assert(initializing == 0);
     if (initializing) {
-        fprintf(stderr, "Tried to shim_init() while initializing");
+        // fprintf(stderr, "Tried to shim_init() while initializing");
         exit(EXIT_FAILURE);
     }
 
@@ -58,7 +58,7 @@ __attribute__((constructor)) void shim_init()
         init_originals();
         initializing = 0;
     }
-    fprintf(stderr,"Shim Init!\n");
+    // fprintf(stderr,"Shim Init!\n");
 }
 
 __attribute__((destructor)) void shim_destroy()
@@ -68,7 +68,7 @@ __attribute__((destructor)) void shim_destroy()
 
     print_allocations();
 
-    fprintf(stderr,"Shim Done!\n");
+    // fprintf(stderr,"Shim Done!\n");
 }
 
 static void init_originals(void)
@@ -78,7 +78,7 @@ static void init_originals(void)
     original_free = dlsym(RTLD_NEXT, "free");
 
     if (original_malloc == NULL || original_free == NULL) {
-        fprintf(stderr, "Error in `dlsym`: %s\n", dlerror());
+        // fprintf(stderr, "Error in `dlsym`: %s\n", dlerror());
         exit(EXIT_FAILURE);
     }
 }
@@ -102,7 +102,7 @@ void* malloc(size_t size)
 
     void* allocatedMemoryBlock = original_malloc(size);
     if (! allocatedMemoryBlock) {
-        fprintf(stderr, "Error in `original_malloc`: %s\n", dlerror());
+        // fprintf(stderr, "Error in `original_malloc`: %s\n", dlerror());
         exit(EXIT_FAILURE);
     }
 
@@ -115,7 +115,7 @@ static void record_allocation(void* memoryBlock, size_t size)
 {
     Allocation* newAllocation = original_malloc(sizeof(Allocation));
     if (! newAllocation) {
-        fprintf(stderr, "Error in `original_malloc, failed to record memory leak`: %s\n", dlerror());
+        // fprintf(stderr, "Error in `original_malloc, failed to record memory leak`: %s\n", dlerror());
         exit(EXIT_FAILURE);
     }
 

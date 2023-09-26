@@ -25,13 +25,10 @@
         "makefile.launchConfigurations": [
             {
                 "cwd": "${workspaceRoot}",
-                "binaryPath": "${workspaceRoot}/bin",
-                "binaryArgs": []
-            },
-            {
-                "cwd": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin",
-                "binaryPath": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/bin/leakcount",
-                "binaryArgs": []
+                "binaryPath": "${workspaceRoot}/leakcount",
+                "binaryArgs": [
+                    "/usr/bin/ls"
+                ]
             }
         ],
         "makefile.loggingLevel": "Debug",

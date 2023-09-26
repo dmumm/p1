@@ -8,7 +8,7 @@
             "name": "C: make, run, and debug leakcount, unquoted args",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/leakcount",
+            "program": "${workspaceFolder}/leakcount",
             "args": [
                 "${input:programToTest}",
                 "${input:programToTestArgs}"

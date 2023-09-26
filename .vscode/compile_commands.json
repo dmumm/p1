@@ -1,32 +1,27 @@
 [
     {
-        "command": "gcc -Isrc -Wall -ggdb -O0 -shared -fPIC src/memory_shim.c -o bin/memory_shim.so -ldl",
+        "command": "gcc -Isrc -Wall -ggdb -O0 -shared -fPIC ./memory_shim.c -o ./memory_shim.so -ldl",
         "directory": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1",
-        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/memory_shim.c"
+        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/memory_shim.c"
     },
     {
-        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o build/main.o src/main.c",
+        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o main.o main.c",
         "directory": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1",
-        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/main.c"
+        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/main.c"
     },
     {
-        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o build/utils.o src/utils.c",
+        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o utils.o utils.c",
         "directory": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1",
-        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/utils.c"
+        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/utils.c"
     },
     {
-        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o build/request.o src/request.c",
+        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o request.o request.c",
         "directory": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1",
-        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/request.c"
+        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/request.c"
     },
     {
-        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o build/arg_utils.o src/arg_utils.c",
+        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o arg_utils.o arg_utils.c",
         "directory": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1",
-        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/src/arg_utils.c"
-    },
-    {
-        "command": "gcc -Isrc -Wall -ggdb -O0 -c -o test_build/test_program.o test_src/test_program.c",
-        "directory": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1",
-        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/test_src/test_program.c"
+        "file": "/home/dmumm/dev/school/fa_2023/cpsc_3220/projects/p1/arg_utils.c"
     }
 ]

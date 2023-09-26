@@ -6,10 +6,10 @@
 
 void printUsage(char const * const optionalMessage)
 {
-    fprintf(stderr, "%s", optionalMessage);
-    fprintf(stderr, "Usage: <path/to/leakcount> <path/to/program> [args for program]\n");
-    fprintf(stderr, "Usage example: ./leakcount ./my_test_program\n");
-    fprintf(stderr, "Usage example: ./leakcount ./my_test_program arg1 arg2\n");
+    // fprintf(stderr, "%s", optionalMessage);
+    // fprintf(stderr, "Usage: <path/to/leakcount> <path/to/program> [args for program]\n");
+    // fprintf(stderr, "Usage example: ./leakcount ./my_test_program\n");
+    // fprintf(stderr, "Usage example: ./leakcount ./my_test_program arg1 arg2\n");
 }
 
 char * realpathCMD(char const * const path)
@@ -32,7 +32,7 @@ char * realpathCMD(char const * const path)
     assert(ferror(realpathPipe) == 0);
     if (/*feof(realpathPipe) ||*/ ferror(realpathPipe)) {
         perror("Failed to read command output");
-        fprintf(stderr, "Failed to read command output\n");
+        // fprintf(stderr, "Failed to read command output\n");
         pclose(realpathPipe);
         return NULL;
     }
@@ -40,7 +40,7 @@ char * realpathCMD(char const * const path)
 
     size_t length = strlen(resolvedPath) + NULL_TERMINATOR_SIZE;
     if (length == 0) {
-        fprintf(stderr, "Resolved path has length 0\n");
+        // fprintf(stderr, "Resolved path has length 0\n");
         return NULL;
     }
     // if (resolvedPath[length - 1] == '\n') {

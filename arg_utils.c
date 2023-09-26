@@ -16,7 +16,7 @@ void standardizeSubjectArgs(Request * const request, int const argc, char const 
     char const ** subjectArgv = NULL;
     size_t const SUBJECT_START_INDEX = 1;
     char const * argIterator = (*argv_pointers)[SUBJECT_START_INDEX];
-    while (*argIterator && subjectArgc < argc) {
+    while (*argIterator) {
         argIterator = parseArg(&subjectArgv, argIterator, &subjectArgc);
     }
 
@@ -105,7 +105,7 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
     switch (inputPath[0]) {
     case '/': // Absolute path given
         snprintf(rawPath, MAX_PATH_SIZE, "%s", inputPath);
-        fprintf(stderr, "Warning: Absolute path given for program to test: %s\n", rawPath);
+        // fprintf(stderr, "Warning: Absolute path given for program to test: %s\n", rawPath);
         break;
 
     case '.': // Relative path given
@@ -113,7 +113,7 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
         break;
 
     default: // Program name given
-        fprintf(stderr, "Warning: No path given for program to test. Assuming '%s' is in PATH", inputPath);
+        // fprintf(stderr, "Warning: No path given for program to test. Assuming '%s' is in PATH", inputPath);
         char command[MAX_PATH_SIZE];
         snprintf(command, MAX_PATH_SIZE, "which %s", inputPath);
         FILE * whichPipe = popen(command, "r");
@@ -128,7 +128,7 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
         rawPath[strcspn(rawPath, "\r\n")] = 0;
         assert(ferror(whichPipe) == 0);
         if (/*! feof(whichPipe) ||*/ ferror(whichPipe)) {
-            fprintf(stderr, "Failed to find %s. Program may not exist in PATH\n", inputPath);
+            // fprintf(stderr, "Failed to find %s. Program may not exist in PATH\n", inputPath);
             printUsage("");
             pclose(whichPipe);
             exit(EXIT_FAILURE);
@@ -139,7 +139,7 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
     }
 
     if (strlen(rawPath) == 0) {
-        fprintf(stderr, "Raw path to requested program has length 0: %s\n", rawPath);
+        // fprintf(stderr, "Raw path to requested program has length 0: %s\n", rawPath);
         printUsage("");
         exit(EXIT_FAILURE);
     }
@@ -148,8 +148,8 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
 
     char * resolvedAbsolutePath = realpathCMD(rawPath);
     if (! resolvedAbsolutePath) {
-        fprintf(stderr, "WARNING: Failed to derive real path to program to test\n");
-        fprintf(stderr, "         Falling back to requested path: %s\n", rawPath);
+        // fprintf(stderr, "WARNING: Failed to derive real path to program to test\n");
+        // fprintf(stderr, "         Falling back to requested path: %s\n", rawPath);
         free(resolvedAbsolutePath);
         resolvedAbsolutePath = rawPath;
     }
