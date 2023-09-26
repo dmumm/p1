@@ -1,3 +1,4 @@
+
 /***********************************************************************************
 
         Author: Dylan Mumm
@@ -18,9 +19,12 @@
 #include "common_libs.h"
 #include "request.h"
 #include "utils.h"
+    #include <dlfcn.h>
+
 
 int main(int argc, char const ** const argv)
 {
+    void *handle = dlopen("./memory_shim.so", RTLD_NOW);
 
     static Request request;
 
@@ -36,6 +40,7 @@ int main(int argc, char const ** const argv)
     pclose(testCommand);
 
     freeRequest(&request);
+    dlclose(handle);
 
     return EXIT_SUCCESS;
 }

@@ -8,7 +8,7 @@ CFLAGS=-Isrc -Wall -ggdb -O0
 LDFLAGS=-Lbuild
 
 # Libraries to link
-LDLIBS=
+LDLIBS=-ldl
 
 # Directories
 SRCDIR=.
@@ -20,30 +20,31 @@ BINDIR=.
 # File extensions
 SRCEXT=c
 
-# Find all source files
-SOURCES=$(shell find $(SRCDIR) -type f -name "*.$(SRCEXT)")
-
-# Generate object files for all source files
-OBJECTS=$(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 
 # Names for make run
 EXECUTABLE=leakcount
 SHIM_LIBRARY=memory_shim
 
 
-# Default target
-all: clean $(BINDIR)/$(EXECUTABLE) $(BINDIR)/$(SHIM_LIBRARY).so $(BINDIR)/$(TEST_EXECUTABLE)
+# Find all source files
+SOURCES=$(shell find $(SRCDIR) -type f -name "*.$(SRCEXT)" | grep -v "$(SHIM_LIBRARY).c")
 
+# Generate object files for all source files
+OBJECTS=$(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
+
+
+# Default target
+all: clean $(BINDIR)/$(SHIM_LIBRARY).so $(BINDIR)/$(EXECUTABLE)
 $(BINDIR)/$(SHIM_LIBRARY).so: $(SRCDIR)/$(SHIM_LIBRARY).c
-	$(CC) $(CFLAGS) -shared -fPIC $(SRCDIR)/$(SHIM_LIBRARY).c -o $(BINDIR)/$(SHIM_LIBRARY).so -ldl
+	$(CC) $(CFLAGS) -shared -fPIC $(SRCDIR)/$(SHIM_LIBRARY).c -o $(BINDIR)/$(SHIM_LIBRARY).so -Wl,--no-as-needed -ldl
 
 # Link object files to generate the executable
 $(BINDIR)/$(EXECUTABLE): $(OBJECTS)
-	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
+	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS) 
 
 # Compile source files to object files
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
-	$(CC) $(CFLAGS) -c -o $@ $<
+	$(CC) $(CFLAGS) -c -o $@ $< 
 
 $(BINDIR)/$(TEST_EXECUTABLE): $(TESTOBJECTS)
 	$(CC) $(LDFLAGS) $^ -o $@ $(LDLIBS)
