@@ -89,18 +89,6 @@ void * malloc(size_t size)
     assert(original_malloc != NULL);
     assert(original_free != NULL);
 
-    // static int initializing = 0;
-    // if (initializing) {
-    //     fprintf(stderr, "Tried to malloc while initializing");
-    //     exit(EXIT_FAILURE);
-    // }
-
-    // if ((original_malloc == NULL || original_free == NULL)) {
-    //     initializing = 1;
-    //     init_originals();
-    //     initializing = 0;
-    // }
-
     void * allocatedMemoryBlock = original_malloc(size);
     if (! allocatedMemoryBlock) {
         // fprintf(stderr, "Error in `original_malloc`: %s\n", dlerror());
@@ -132,18 +120,6 @@ void free(void * requestedMemoryBlock)
 {
     assert(original_malloc != NULL);
     assert(original_free != NULL);
-
-    // static int initializing = 0;
-    // if (initializing) {
-    //     fprintf(stderr, "Tried to free while initializing");
-    //     exit(EXIT_FAILURE);
-    // }
-
-    // if ((original_malloc == NULL || original_free == NULL)) {
-    //     initializing = 1;
-    //     init_originals();
-    //     initializing = 0;
-    // }
 
     record_free(requestedMemoryBlock);
     original_free(requestedMemoryBlock);

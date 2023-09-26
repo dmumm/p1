@@ -39,46 +39,6 @@ char * simpleArgv(char const *** argv_pointers, int * newArgc, int argc, char co
 {
     // ### seperated in memory ### //
 
-    // size_t const NULL_TERMINATOR_SIZE = 1;
-    // int i, j;
-    // char ** newArgv = (char **)malloc(argc * sizeof(char *));
-    // if (! newArgv) {
-    //     perror("Failed to allocate memory for newArgv");
-    //     exit(EXIT_FAILURE);
-    // }
-    // for (i = 0; i < argc; i++) {
-    //     size_t iLength = strlen(argv[i]) + NULL_TERMINATOR_SIZE;
-    //     newArgv[i] = (char * const)malloc(iLength * sizeof(char));
-    //     if (! newArgv[i]) {
-    //         perror("Failed to allocate memory for newArgv[i]");
-    //         exit(EXIT_FAILURE);
-    //     }
-    //     for (j = 0; j < iLength; j++) {
-    //         newArgv[i][j] = argv[i][j];
-    //     }
-    //     newArgv[i][j] = '\0';
-    // }
-    // return newArgv;
-
-    // ## VLA ## //
-
-    // // find length of longest arg
-    // int maxLength = 0;
-    // for (int i = 0; i < argc; i++) {
-    //     int iLength = strlen(argv[i]);
-    //     if (iLength > maxLength) {
-    //         maxLength = iLength;
-    //     }
-    // }
-    // size_t const NULL_TERMINATOR_SIZE = 1;
-    // char newArgv[argc][maxLength + NULL_TERMINATOR_SIZE];
-
-    // for (int i = 0; i < argc; i++) {
-    //     my_strlcpy(newArgv[i], argv[i], maxLength + NULL_TERMINATOR_SIZE);
-    // }
-
-    // return (char**)newArgv;
-
     // ### dynamically allocated null terminator seperated single memory block ### //
     size_t const NULL_TERMINATOR_SIZE = 1;
     size_t totalLength = 0;
@@ -151,9 +111,6 @@ void processArgs(Request * const pRequest, int const argc, char const ** const a
     free(argv_pointers);
 
     // // ### Determining File Paths ### //
-
-    // char* rawCWD = argv_pointers[0];
-    // char* rawSubjectPath = pRequest->subjectArgs[0];
 
     deriveSubjectPath(pRequest, pRequest->subjectArgs[0]);
 
