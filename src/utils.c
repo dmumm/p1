@@ -15,6 +15,7 @@ void printUsage(char const * const optionalMessage)
 char * realpathCMD(char const * const path)
 {
     int const MAX_PATH_SIZE = 4096;
+    int const NULL_TERMINATOR_SIZE = 1;
 
     char command[MAX_PATH_SIZE];
     snprintf(command, sizeof(command), "realpath -e \"%s\"", path);
@@ -27,8 +28,9 @@ char * realpathCMD(char const * const path)
 
     char resolvedPath[MAX_PATH_SIZE];
     fgets(resolvedPath, MAX_PATH_SIZE, realpathPipe);
+    resolvedPath[strcspn(resolvedPath, "\r\n")] = 0;
     assert(ferror(realpathPipe) == 0);
-    if (feof(realpathPipe) || ferror(realpathPipe)) {
+    if (/*feof(realpathPipe) ||*/ ferror(realpathPipe)) {
         perror("Failed to read command output");
         fprintf(stderr, "Failed to read command output\n");
         pclose(realpathPipe);
@@ -36,14 +38,14 @@ char * realpathCMD(char const * const path)
     }
     pclose(realpathPipe);
 
-    size_t length = strlen(resolvedPath);
+    size_t length = strlen(resolvedPath) + NULL_TERMINATOR_SIZE;
     if (length == 0) {
         fprintf(stderr, "Resolved path has length 0\n");
         return NULL;
     }
-    if (resolvedPath[length - 1] == '\n') {
-        resolvedPath[length - 1] = '\0';
-    }
+    // if (resolvedPath[length - 1] == '\n') {
+    //     resolvedPath[length - 1] = '\0';
+    // }
 
     char * result = (char *)malloc(length);
     if (! result) {

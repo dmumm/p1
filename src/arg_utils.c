@@ -22,7 +22,6 @@ void standardizeSubjectArgs(Request * const request, int const argc, char const 
 
     request->subjectArgs = subjectArgv;
     request->subjectArgc = subjectArgc;
-
 }
 
 char const * parseArg(char const *** const pSubjectArgv, char const * charIterator, int * const subjectArgc)
@@ -124,9 +123,11 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
             exit(EXIT_FAILURE);
         }
 
+        //./bin/leakcount ls .
         fgets(rawPath, MAX_PATH_SIZE, whichPipe);
+        rawPath[strcspn(rawPath, "\r\n")] = 0;
         assert(ferror(whichPipe) == 0);
-        if (! feof(whichPipe) || ferror(whichPipe)) {
+        if (/*! feof(whichPipe) ||*/ ferror(whichPipe)) {
             fprintf(stderr, "Failed to find %s. Program may not exist in PATH\n", inputPath);
             printUsage("");
             pclose(whichPipe);
@@ -163,5 +164,4 @@ void deriveSubjectPath(Request * pRequest, char const * inputPath)
     free(rawCWD);
     pRequest->currentWorkingDirectory = resolvedCWD;
     pRequest->subjectPath = resolvedAbsolutePath;
-
 }
